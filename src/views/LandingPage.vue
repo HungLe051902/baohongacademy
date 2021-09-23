@@ -34,7 +34,14 @@
   </div>
 </template>
 <script>
-export default {};
+var b = 100;
+console.log(b);
+export default {
+  created() {
+    var a = 10;
+    console.log(a);
+  },
+};
 </script>
 <style lang="scss" scoped>
 #landingpage {
@@ -69,7 +76,7 @@ export default {};
     width: 100%;
     height: calc(100vh - 60px);
     .brand {
-      color: $color-primary;
+      color: white;
       font-size: 50px;
       font-weight: bold;
     }

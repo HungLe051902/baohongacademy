@@ -1,15 +1,14 @@
-
-
 const optionLoadScss = {
-    loaderOptions: {
-        sass: {
-            prependData: `@import "@/assets/scss/abstracts/index.scss"`
-        }
-    }
-}
+  loaderOptions: {
+    sass: {
+      additionalData: `@import "@/assets/scss/abstracts/index.scss"`,
+    },
+  },
+};
 
 module.exports = {
-    devServer: {
-        css: optionLoadScss
-    }
-}
+  devServer: {
+    clientLogLevel: `info`,
+    // css: optionLoadScss,
+  },
+};

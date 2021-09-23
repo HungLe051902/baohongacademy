@@ -76,7 +76,7 @@ export default {
     width: 100%;
     height: calc(100vh - 60px);
     .brand {
-      color: white;
+      color: $color-white;
       font-size: 50px;
       font-weight: bold;
     }

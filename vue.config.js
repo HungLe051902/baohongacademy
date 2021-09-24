@@ -8,8 +8,5 @@ const optionLoadScss = {
 };
 
 module.exports = {
-  // devServer: {
-  //   clientLogLevel: `info`,
-  // },
   css: optionLoadScss,
 };

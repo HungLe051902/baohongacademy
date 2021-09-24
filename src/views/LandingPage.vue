@@ -34,14 +34,7 @@
   </div>
 </template>
 <script>
-var b = 100;
-console.log(b);
-export default {
-  created() {
-    var a = 10;
-    console.log(a);
-  },
-};
+export default {};
 </script>
 <style lang="scss" scoped>
 #landingpage {
@@ -65,6 +58,7 @@ export default {
         display: flex;
         align-items: center;
         font-weight: bold;
+        cursor: pointer;
         &:hover {
           cursor: pointer;
           background-color: #c5d5d3;

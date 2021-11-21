@@ -1,0 +1,11 @@
+QUẢN LÝ CÔNG VIỆC TRÊN TRANG: https://dev.azure.com/LXHUNG/BaoHongAcademy
+
+- Các trạng thái của PBI: New, Approved, Committed, Implemented, Done
+
+- Các trạng thái của bug: New, Approved, Committed, Done
+
+- Các trạng thái liên kết: Child, Parent, Version Control
+
+- Cách đặt tên PBI: ID - Mô tả chung - Trạng thái - Ngày bắt đầu làm
+
+- Cách đặt tên Bug:

@@ -16,7 +16,7 @@
         <div></div>
         <div class="account">
           <img class="avatar" src="" alt="" />
-          <span style="font-weight: bold">Tài khoản</span>
+          <span class="pointer" style="font-weight: bold">Tài khoản</span>
         </div>
       </div>
     </div>

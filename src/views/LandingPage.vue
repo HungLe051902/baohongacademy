@@ -38,7 +38,7 @@
     <div id="landingpage-content">
       <div class="w-100 h-100 d-flex">
         <div class="w-50 d-flex justify-content-center align-items-center">
-          <div class="brand">BaoHongAcademy</div>
+          <Brand />
         </div>
         <div class="w-50">
           <div class="landingpage-intro"></div>
@@ -49,7 +49,12 @@
   </div>
 </template>
 <script>
-export default {};
+import Brand from "@/components/Brand";
+export default {
+  components: {
+    Brand,
+  },
+};
 </script>
 <style lang="scss" scoped>
 #landingpage {
@@ -84,11 +89,6 @@ export default {};
   #landingpage-content {
     width: 100%;
     height: calc(100vh - 60px);
-    .brand {
-      color: $color-white;
-      font-size: 50px;
-      font-weight: bold;
-    }
   }
 }
 

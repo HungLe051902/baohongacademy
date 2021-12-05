@@ -3,7 +3,6 @@
     <h1>Guideline</h1>
 
     <h5>Dropdown</h5>
-
     <div class="dropdown">
       <button
         class="btn btn-secondary dropdown-toggle"
@@ -21,20 +20,11 @@
         <a class="dropdown-item" href="#">Something else here</a>
       </div>
     </div>
-
     <p>------------</p>
 
-    <div class="container">
-      <h2>Pagination</h2>
-      <p>The .pagination class provides pagination links:</p>
-      <ul class="pagination">
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-      </ul>
-    </div>
+    <h5>Base Input</h5>
+    <input type="text" />
+    <p>------------</p>
   </div>
 </template>
 <script>

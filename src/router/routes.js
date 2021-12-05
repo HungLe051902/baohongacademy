@@ -33,9 +33,4 @@ export const routes = [
     name: "Guideline",
     component: Guideline,
   },
-  // {
-  //   path: "*",
-  //   name: "PageNotFound",
-  //   redirect: "/",
-  // },
 ];

@@ -2,6 +2,8 @@
   <div id="about">
     About
 
+    <input type="text" name="" value="" />
+
     <ion-button color="primary">Primary</ion-button>
     <ion-button color="secondary">Secondary</ion-button>
     <ion-button color="tertiary">Tertiary</ion-button>

@@ -12,11 +12,26 @@
         <div class="menu-item">Tài trợ</div>
         <div class="menu-item">Liên hệ</div>
       </div>
-      <div id="landingpage-header-right" class="d-flex">
+      <div id="landingpage-header-right" class="d-flex align-items-center">
         <div></div>
-        <div class="account">
+        <div class="account center-content">
           <img class="avatar" src="" alt="" />
-          <span class="pointer" style="font-weight: bold">Tài khoản</span>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Tài khoản
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Đăng ký</a>
+              <a class="dropdown-item" href="#">Đăng nhập</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -75,5 +90,10 @@ export default {};
       font-weight: bold;
     }
   }
+}
+
+// Override style
+.dropdown-menu {
+  min-width: 8rem;
 }
 </style>

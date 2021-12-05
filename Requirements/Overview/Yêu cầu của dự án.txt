@@ -1,6 +1,0 @@
-1. Ứng dụng cho phép người dùng có thể học các kiến thức về lập trình
-2. Ứng dụng cho phép người dùng có thể phản hồi cũng như đăng ký khóa học
-3. Ứng dụng có thể hiển thị tốt trên cả Web và Mobile
-4. Ứng dụng cho phép xử lý với lượng dữ liệu lớn, lượng tương tác lớn (> 100.000 lượt tương tác)
-5. Ứng cho có tích hợp chatbot cho để tương tác với người dùng một cách thông minh (gợi ý về khóa học, chỉ ra các trang thông tin hữu ích, ...)
-6. Xây dựng ứng dụng trên điện thoại

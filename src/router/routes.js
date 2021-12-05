@@ -2,6 +2,7 @@ import LandingPage from "@/views/LandingPage";
 import Main from "@/views/main";
 import About from "@/views/main/about";
 import Register from "@/views/account/Register";
+import Guideline from "@/views/Guideline";
 
 export const routes = [
   {
@@ -26,6 +27,11 @@ export const routes = [
     path: "/register",
     name: "Register",
     component: Register,
+  },
+  {
+    path: "/guideline",
+    name: "Guideline",
+    component: Guideline,
   },
   // {
   //   path: "*",

@@ -7,9 +7,10 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input
+            ref="emailInput"
             type="email"
             class="form-control"
-            id="exampleInputEmail1"
+            id="register-exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
           />
@@ -32,13 +33,16 @@
             placeholder="Retype Password"
           />
         </div>
-        <button type="submit" class="h-btn h-btn-primary w-100">Đăng ký</button>
+        <button type="submit" class="mt-2 h-btn h-btn-primary w-100">Đăng ký</button>
         <p class="mt-1">
           Khi đăng ký, bạn đã đồng ý với Điều khoản sử dụng và Chính sách bảo mật của
           chúng tôi.
         </p>
         <div class="center-content flex-column">
-          <p class="mb-1">Bạn đã có tài khoản? <a href="">Đăng nhập</a></p>
+          <p class="mb-1">
+            Bạn đã có tài khoản?
+            <a v-on:click="goToLogin" href="#">Đăng nhập</a>
+          </p>
           <a href="">Quên mật khẩu?</a>
         </div>
       </form>
@@ -47,10 +51,22 @@
 </template>
 <script>
 import Brand from "@/components/Brand";
+import AccountMixin from "@/mixins/accountMixin.vue";
+
 export default {
   components: {
     Brand,
   },
+  mounted() {
+    // Focus first tab
+    var vm = this;
+    this.$nextTick(function () {
+      setTimeout(function () {
+        vm.$refs.emailInput.focus();
+      }, 100);
+    });
+  },
+  mixins: [AccountMixin],
 };
 </script>
 <style lang="scss" scoped>
@@ -58,6 +74,7 @@ export default {
   padding: 36px 0;
   background-color: $color-bg;
   height: 100vh;
+  overflow: auto;
   .register-form {
     width: 500px;
     padding: 24px;

@@ -28,8 +28,8 @@
               Tài khoản
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Đăng ký</a>
-              <a class="dropdown-item" href="#">Đăng nhập</a>
+              <a class="dropdown-item" v-on:click="goToRegister" href="#">Đăng ký</a>
+              <a class="dropdown-item" v-on:click="goToLogin" href="#">Đăng nhập</a>
             </div>
           </div>
         </div>
@@ -50,10 +50,14 @@
 </template>
 <script>
 import Brand from "@/components/Brand";
+import AccountMixin from "@/mixins/accountMixin.vue";
+
 export default {
   components: {
     Brand,
   },
+  mixins: [AccountMixin],
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>

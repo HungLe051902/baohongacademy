@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="d-flex align-items-center flex-column">
     <Brand />
-    <p>Đăng ký tài khoản mới</p>
+    <p class="fs20p">Đăng ký tài khoản mới</p>
     <div class="register-form">
       <form>
         <div class="form-group">

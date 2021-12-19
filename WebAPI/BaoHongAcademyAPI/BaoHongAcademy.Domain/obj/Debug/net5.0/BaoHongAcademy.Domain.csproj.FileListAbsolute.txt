@@ -1,0 +1,14 @@
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\bin\Debug\net5.0\BaoHongAcademy.Domain.deps.json
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\bin\Debug\net5.0\BaoHongAcademy.Domain.dll
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\bin\Debug\net5.0\ref\BaoHongAcademy.Domain.dll
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\bin\Debug\net5.0\BaoHongAcademy.Domain.pdb
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\BaoHongAcademy.Domain.csproj.AssemblyReference.cache
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\BaoHongAcademy.Domain.Resources.ResourceCommon.resources
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\BaoHongAcademy.Domain.csproj.GenerateResource.cache
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\BaoHongAcademy.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\BaoHongAcademy.Domain.AssemblyInfoInputs.cache
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\BaoHongAcademy.Domain.AssemblyInfo.cs
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\BaoHongAcademy.Domain.csproj.CoreCompileInputs.cache
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\BaoHongAcademy.Domain.dll
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\ref\BaoHongAcademy.Domain.dll
+D:\Programming\Web\Projects\baohongacademy\WebAPI\BaoHongAcademyAPI\BaoHongAcademy.Domain\obj\Debug\net5.0\BaoHongAcademy.Domain.pdb

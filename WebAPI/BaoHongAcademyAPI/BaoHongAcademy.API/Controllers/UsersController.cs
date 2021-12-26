@@ -21,7 +21,7 @@ namespace BaoHongAcademy.API.Controllers
             {
                 return new ActionServiceResult(true, (int)AppCode.Success, "Đăng nhập thành công", "Token");
             }
-            return new ActionServiceResult(false, (int)AppCode.Error, "Đăng nhập thành công", null);
+            return new ActionServiceResult(false, (int)AppCode.Error, "Đăng nhập thất bại", null);
         }
     }
 }

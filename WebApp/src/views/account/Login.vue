@@ -63,11 +63,12 @@ export default {
       },
     };
   },
+  created() {},
   methods: {
     login() {
       try {
         console.log("abc", this.userCred);
-        HTTP.post("/api/Accounts/authenticate", this.userCred)
+        HTTP.post("/Accounts/authenticate", this.userCred)
           .then((res) => {
             console.log({ res });
           })
@@ -80,6 +81,7 @@ export default {
     },
   },
   mounted() {
+    console.log("MOT", process.env.BASE_URL);
     // Focus first tab
     var vm = this;
     this.$nextTick(function () {

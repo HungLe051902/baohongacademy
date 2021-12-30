@@ -24,3 +24,5 @@ pnpm-debug.log*
 
 # C#
 *.cache
+bin/
+obj/

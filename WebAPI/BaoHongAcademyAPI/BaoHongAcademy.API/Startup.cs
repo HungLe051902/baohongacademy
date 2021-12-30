@@ -33,8 +33,7 @@ namespace BaoHongAcademy.API
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:8080/",
-                            "http://www.contoso.com")
+                        builder.WithOrigins("http://localhost:8080")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
@@ -67,7 +66,7 @@ namespace BaoHongAcademy.API
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireCors(MyAllowSpecificOrigins);
             });
         }
     }

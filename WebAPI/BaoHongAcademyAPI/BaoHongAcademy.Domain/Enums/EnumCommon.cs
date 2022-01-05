@@ -13,6 +13,12 @@ namespace BaoHongAcademy.Domain.Enums
             Success = 200,
             Error = 500
         }
+
+        public enum Gender
+        {
+            Female = 0,
+            Male = 1
+        }
     }
 
 }

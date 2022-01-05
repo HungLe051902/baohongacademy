@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BaoHongAcademy.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace BaoHongAcademy.API
 {
@@ -38,6 +40,9 @@ namespace BaoHongAcademy.API
                             .AllowAnyMethod();
                     });
             });
+
+            services.AddDbContext<BaoHongContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

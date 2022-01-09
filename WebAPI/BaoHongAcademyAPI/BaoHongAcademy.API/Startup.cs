@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BaoHongAcademy.API.Interfaces;
+using BaoHongAcademy.API.Services;
 using BaoHongAcademy.Infrastructure;
 using BaoHongAcademy.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +46,8 @@ namespace BaoHongAcademy.API
 
             services.AddDbContext<BaoHongContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IUserService, UserService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -68,7 +68,7 @@ namespace BaoHongAcademy.API
                 var services = scope.ServiceProvider;
 
                 var context = services.GetRequiredService<BaoHongContext>();
-                context.Database.EnsureCreated();
+                //context.Database.EnsureCreated();
                 context.Database.Migrate();
                 DbInitializer.Initialize(context);
             }

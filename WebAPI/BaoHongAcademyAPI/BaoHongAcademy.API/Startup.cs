@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BaoHongAcademy.Infrastructure;
+using BaoHongAcademy.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace BaoHongAcademy.API
@@ -42,7 +43,7 @@ namespace BaoHongAcademy.API
             });
 
             services.AddDbContext<BaoHongContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -59,6 +60,17 @@ namespace BaoHongAcademy.API
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BaoHongAcademy.API v1"));
+            }
+
+            // Create the database
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                var context = services.GetRequiredService<BaoHongContext>();
+                context.Database.EnsureCreated();
+                context.Database.Migrate();
+                DbInitializer.Initialize(context);
             }
 
             app.UseHttpsRedirection();

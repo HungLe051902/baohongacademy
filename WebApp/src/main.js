@@ -24,6 +24,13 @@ import "@ionic/vue/css/display.css";
 // Import css
 import "@/assets/scss/main.scss";
 
+// Validation rules
+// import { defineRule } from "vee-validate";
+// import { required, email, min } from "@vee-validate/rules";
+// defineRule("required", required);
+// defineRule("email", email);
+// defineRule("min", min);
+
 const app = createApp(App);
 
 app.use(router);

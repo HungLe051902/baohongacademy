@@ -31,13 +31,9 @@
           v-model="loginKeeping"
           id="flexCheckDefault"
         />
-        <label class="form-check-label" for="flexCheckDefault">
-          Duy trì đăng nhập
-        </label>
+        <label class="form-check-label" for="flexCheckDefault"> Duy trì đăng nhập </label>
       </div>
-      <button v-on:click="login" class="mt-2 h-btn h-btn-primary w-100">
-        Đăng nhập
-      </button>
+      <button v-on:click="login" class="mt-2 h-btn h-btn-primary w-100">Đăng nhập</button>
       <div class="mt-3 center-content flex-column">
         <p class="mb-3">
           Bạn chưa có tài khoản?
@@ -52,6 +48,8 @@
 import Brand from "@/components/Brand";
 import AccountMixin from "@/mixins/accountMixin.vue";
 import { HTTP } from "@/services/BaseAxios";
+// import { Form, Field } from "vee-validate";
+// import { validateEmail } from "@/helpers/validation.js";
 
 export default {
   data() {
@@ -92,6 +90,8 @@ export default {
   },
   components: {
     Brand,
+    // Form,
+    // Field,
   },
   mixins: [AccountMixin],
 };

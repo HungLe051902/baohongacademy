@@ -31,5 +31,15 @@ namespace BaoHongAcademy.API.Controllers
             }
             return new ActionServiceResult(false, (int)AppCode.Error, "Đăng nhập thất bại", null);
         }
+
+        [HttpPost("register")]
+        public ActionServiceResult Register(UserCred userCred)
+        {
+            if (_userService.Authenticate(userCred.UserName, userCred.Password))
+            {
+                return new ActionServiceResult(true, (int)AppCode.Success, "Đăng nhập thành công", "Token");
+            }
+            return new ActionServiceResult(false, (int)AppCode.Error, "Đăng nhập thất bại", null);
+        }
     }
 }

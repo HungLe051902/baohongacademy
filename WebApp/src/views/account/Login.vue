@@ -3,6 +3,7 @@
     <Brand />
     <p class="fs20p">Đăng nhập vào BaoHongAcademy</p>
     <div class="login-form">
+      <!-- <Form> -->
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input
@@ -11,8 +12,9 @@
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           placeholder="Enter email"
-          v-model="userCred.userName"
+          v-model="email"
         />
+        <span class="text-danger">{{ emailError }}</span>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
@@ -21,8 +23,9 @@
           class="form-control"
           id="exampleInputPassword1"
           placeholder="Password"
-          v-model="userCred.password"
+          v-model="password"
         />
+        <span class="text-danger">{{ passwordError }}</span>
       </div>
       <div class="form-check">
         <input
@@ -41,6 +44,7 @@
         </p>
         <a href="">Quên mật khẩu?</a>
       </div>
+      <!-- </Form> -->
     </div>
   </div>
 </template>
@@ -48,25 +52,43 @@
 import Brand from "@/components/Brand";
 import AccountMixin from "@/mixins/accountMixin.vue";
 import { HTTP } from "@/services/BaseAxios";
-// import { Form, Field } from "vee-validate";
-// import { validateEmail } from "@/helpers/validation.js";
+import { useField, useForm } from "vee-validate";
+import * as yup from "yup";
 
 export default {
+  setup() {
+    // Define a validation schema
+    const schema = yup.object({
+      email: yup.string().required().email(),
+      password: yup.string().required().min(8),
+    });
+    // Create a form context with the validation schema
+    useForm({
+      validationSchema: schema,
+    });
+    // No need to define rules for fields
+    const { value: email, errorMessage: emailError } = useField("email");
+    const { value: password, errorMessage: passwordError } = useField("password");
+    return {
+      email,
+      emailError,
+      password,
+      passwordError,
+    };
+  },
   data() {
     return {
       loginKeeping: false,
-      userCred: {
-        userName: null,
-        password: null,
-      },
     };
   },
   created() {},
   methods: {
     login() {
       try {
-        console.log("abc", this.userCred);
-        HTTP.post("/Accounts/authenticate", this.userCred)
+        HTTP.post("/Accounts/authenticate", {
+          UserName: this.email,
+          Password: this.password,
+        })
           .then((res) => {
             console.log({ res });
           })

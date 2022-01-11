@@ -31,5 +31,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Technologies
 **Vue 3**
 ```
-Library UI: Ionic, VeeValidate
+Library UI: Ionic, VeeValidate, vue3-notification
 ```

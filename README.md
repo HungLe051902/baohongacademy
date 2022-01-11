@@ -29,6 +29,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Technologies
+**Vue 3**
 ```
-UI: Ionic, VeeValidate
+Library UI: Ionic, VeeValidate
 ```

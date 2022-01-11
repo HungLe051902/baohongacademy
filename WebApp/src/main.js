@@ -21,18 +21,16 @@ import "@ionic/vue/css/text-transformation.css";
 import "@ionic/vue/css/flex-utils.css";
 import "@ionic/vue/css/display.css";
 
-// Import css
+/* Import css */
 import "@/assets/scss/main.scss";
 
-// Validation rules
-// import { defineRule } from "vee-validate";
-// import { required, email, min } from "@vee-validate/rules";
-// defineRule("required", required);
-// defineRule("email", email);
-// defineRule("min", min);
+/* Vue-toastification */
+import Notifications from "@kyvg/vue3-notification";
 
 const app = createApp(App);
 
 app.use(router);
 app.use(IonicVue);
+app.use(Notifications);
+
 app.mount("#app");

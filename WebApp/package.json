@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ionic/vue": "^5.9.1",
+    "@kyvg/vue3-notification": "^2.3.4",
     "@popperjs/core": "^2.9.2",
     "@vee-validate/rules": "^4.5.7",
     "axios": "^0.24.0",

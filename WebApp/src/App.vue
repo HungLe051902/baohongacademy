@@ -1,6 +1,7 @@
 <template>
   <div id="baohong-academy">
     <router-view />
+    <notifications position="top center" />
   </div>
 </template>
 

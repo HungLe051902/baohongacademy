@@ -42,6 +42,12 @@
     <p>
       ------------------------------------------------------------------------------------
     </p>
+
+    <h3>Toastification</h3>
+    <button v-on="showToast">Show toast</button>
+    <p>
+      ------------------------------------------------------------------------------------
+    </p>
   </div>
 </template>
 <script>
@@ -63,8 +69,12 @@ export default {
     onSubmit(values) {
       console.log(values, null, 2);
     },
-    haha() {
-      console.log("hjiwerewr");
+    showToast() {
+      this.$notify({
+        type: "success", // warn, error, success
+        title: "Important message",
+        text: "Hello user!",
+      });
     },
     validateEmail(value) {
       return validateEmail(value);

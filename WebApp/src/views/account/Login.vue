@@ -34,13 +34,9 @@
           v-model="loginKeeping"
           id="flexCheckDefault"
         />
-        <label class="form-check-label" for="flexCheckDefault">
-          Duy trì đăng nhập
-        </label>
+        <label class="form-check-label" for="flexCheckDefault"> Duy trì đăng nhập </label>
       </div>
-      <button v-on:click="login" class="mt-2 h-btn h-btn-primary w-100">
-        Đăng nhập
-      </button>
+      <button v-on:click="login" class="mt-2 h-btn h-btn-primary w-100">Đăng nhập</button>
       <div class="mt-3 center-content flex-column">
         <p class="mb-3">
           Bạn chưa có tài khoản?
@@ -53,6 +49,7 @@
   </div>
 </template>
 <script>
+import {saveToken} from "@/helpers/authenticationHelper";
 import Brand from "@/components/Brand";
 import AccountMixin from "@/mixins/accountMixin.vue";
 import { HTTP } from "@/services/BaseAxios";
@@ -72,8 +69,7 @@ export default {
     });
     // No need to define rules for fields
     const { value: email, errorMessage: emailError } = useField("email");
-    const { value: password, errorMessage: passwordError } =
-      useField("password");
+    const { value: password, errorMessage: passwordError } = useField("password");
     return {
       metaValidation: meta,
       email,
@@ -92,8 +88,6 @@ export default {
     login() {
       try {
         if (this.metaValidation.valid == false) {
-          //
-
           return;
         }
 
@@ -108,6 +102,9 @@ export default {
                 title: "Thành công",
                 text: "Đăng nhập thành công",
               });
+              // Save token to local storage
+              saveToken(res.data.Data);
+
               this.$router.push("/main");
             }
           })

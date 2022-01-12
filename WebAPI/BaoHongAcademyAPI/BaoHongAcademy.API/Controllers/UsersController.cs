@@ -25,9 +25,10 @@ namespace BaoHongAcademy.API.Controllers
         [HttpPost("authenticate")]
         public ActionServiceResult Authenticate(UserCred userCred)
         {
-            if (_userService.Authenticate(userCred.UserName, userCred.Password))
+            var token = _userService.Authenticate(userCred.UserName, userCred.Password);
+            if (!String.IsNullOrEmpty(token))
             {
-                return new ActionServiceResult(true, (int)AppCode.Success, "Đăng nhập thành công", "Token");
+                return new ActionServiceResult(true, (int)AppCode.Success, "Đăng nhập thành công", token);
             }
             return new ActionServiceResult(false, (int)AppCode.Error, "Đăng nhập thất bại", null);
         }
@@ -35,11 +36,7 @@ namespace BaoHongAcademy.API.Controllers
         [HttpPost("register")]
         public ActionServiceResult Register(UserCred userCred)
         {
-            if (_userService.Authenticate(userCred.UserName, userCred.Password))
-            {
-                return new ActionServiceResult(true, (int)AppCode.Success, "Đăng nhập thành công", "Token");
-            }
-            return new ActionServiceResult(false, (int)AppCode.Error, "Đăng nhập thất bại", null);
+            throw new NotImplementedException();
         }
     }
 }

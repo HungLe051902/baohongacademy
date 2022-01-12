@@ -16,6 +16,7 @@ using BaoHongAcademy.API.Services;
 using BaoHongAcademy.Infrastructure;
 using BaoHongAcademy.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using BaoHongAcademy.API.Helpers;
 
 namespace BaoHongAcademy.API
 {
@@ -52,7 +53,11 @@ namespace BaoHongAcademy.API
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
-            }); ;
+            });
+
+            // configure strongly typed settings object
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BaoHongAcademy.API", Version = "v1" });

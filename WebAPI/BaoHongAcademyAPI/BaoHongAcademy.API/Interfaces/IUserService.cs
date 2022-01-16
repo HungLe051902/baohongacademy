@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BaoHongAcademy.Domain.Entities;
+using BaoHongAcademy.Domain.Models;
 
 namespace BaoHongAcademy.API.Interfaces
 {
@@ -22,7 +23,7 @@ namespace BaoHongAcademy.API.Interfaces
         /// <param name="userName"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public Task<bool> RegisterUser(string userName, string password);
+        public Task<ActionServiceResult> RegisterUser(string userName, string password);
 
         /// <summary>
         /// 

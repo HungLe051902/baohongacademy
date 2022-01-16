@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BaoHongAcademy.API.Helpers;
+using BaoHongAcademy.API.Helpers.Constants;
 using BaoHongAcademy.API.Interfaces;
 using BaoHongAcademy.Domain.Entities;
 using BaoHongAcademy.Infrastructure;
@@ -24,7 +25,7 @@ namespace BaoHongAcademy.API.Services
 
         public string Authenticate(string userName, string password)
         {
-            var userAuthen = _dbContext.Users.FirstOrDefault(e => e.Email == userName && e.Password == password);
+            var userAuthen = _dbContext.Users.FirstOrDefault(e => e.Email == userName && HelperMethods.VerifyHash(password, HashAlgorithmCode.SHA512, e.Password));
 
             var token = (dynamic)null;
             if (userAuthen != null)
@@ -33,6 +34,19 @@ namespace BaoHongAcademy.API.Services
             }
 
             return token;
+        }
+
+        public Task<bool> RegisterUser(string userName, string password)
+        {
+            var users = _dbContext.Users;
+            users.Add(new User()
+            {
+                Email = userName,
+                Password = HelperMethods.ComputeHash(password, HashAlgorithmCode.SHA512, null)
+            });
+            _dbContext.SaveChanges();
+
+            return Task.FromResult<bool>(true);
         }
 
         public User GetById(Guid id)

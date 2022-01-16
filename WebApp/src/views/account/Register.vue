@@ -3,59 +3,108 @@
     <Brand />
     <p class="fs20p">Đăng ký tài khoản mới</p>
     <div class="register-form">
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            ref="emailInput"
-            type="email"
-            class="form-control"
-            id="register-exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword2">Retype password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword2"
-            placeholder="Retype Password"
-          />
-        </div>
-        <button type="submit" class="mt-2 h-btn h-btn-primary w-100">Đăng ký</button>
-        <p class="mt-1">
-          Khi đăng ký, bạn đã đồng ý với Điều khoản sử dụng và Chính sách bảo mật của
-          chúng tôi.
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          ref="emailInput"
+          type="email"
+          class="form-control"
+          id="register-exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+          v-model="email"
+        />
+        <span class="text-danger">{{ emailError }}</span>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Password"
+          v-model="password"
+        />
+        <span class="text-danger">{{ passwordError }}</span>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword2">Retype password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword2"
+          placeholder="Retype Password"
+          v-model="passwordConfirmation"
+        />
+        <span class="text-danger">{{ passwordConfirmationError }}</span>
+      </div>
+      <button v-on:click="registerUser" class="mt-2 h-btn h-btn-primary w-100">
+        Đăng ký
+      </button>
+      <p class="mt-1">
+        Khi đăng ký, bạn đã đồng ý với Điều khoản sử dụng và Chính sách bảo mật của chúng
+        tôi.
+      </p>
+      <div class="center-content flex-column">
+        <p class="mb-1">
+          Bạn đã có tài khoản?
+          <a v-on:click="goToLogin" href="#">Đăng nhập</a>
         </p>
-        <div class="center-content flex-column">
-          <p class="mb-1">
-            Bạn đã có tài khoản?
-            <a v-on:click="goToLogin" href="#">Đăng nhập</a>
-          </p>
-          <a href="">Quên mật khẩu?</a>
-        </div>
-      </form>
+        <a href="">Quên mật khẩu?</a>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import Brand from "@/components/Brand";
 import AccountMixin from "@/mixins/accountMixin.vue";
+import { HTTP } from "@/services/BaseAxios";
+import { useField, useForm } from "vee-validate";
+import * as yup from "yup";
 
 export default {
   components: {
     Brand,
+  },
+  setup() {
+    // Define a validation schema
+    const schema = yup.object({
+      email: yup
+        .string()
+        .required("Email phải được nhập")
+        .email("Bạn nhập sai định dạng email"),
+      password: yup
+        .string()
+        .required("Password phải được nhập")
+        .min(8, "Password phải có ít nhất 8 ký tự"),
+      passwordConfirmation: yup
+        .string()
+        .oneOf([yup.ref("password"), null], "Mật khẩu phải khớp"),
+    });
+    // Create a form context with the validation schema
+    const { meta, handleSubmit } = useForm({
+      validationSchema: schema,
+    });
+    // No need to define rules for fields
+    const { value: email, errorMessage: emailError } = useField("email");
+    const { value: password, errorMessage: passwordError } = useField("password");
+    const {
+      value: passwordConfirmation,
+      errorMessage: passwordConfirmationError,
+    } = useField("passwordConfirmation");
+    const onSubmit = handleSubmit(() => {
+      //
+    });
+    return {
+      metaValidation: meta,
+      onSubmit,
+      email,
+      emailError,
+      password,
+      passwordError,
+      passwordConfirmation,
+      passwordConfirmationError,
+    };
   },
   mounted() {
     // Focus first tab
@@ -67,6 +116,35 @@ export default {
     });
   },
   mixins: [AccountMixin],
+  methods: {
+    registerUser() {
+      try {
+        this.onSubmit();
+        if (this.metaValidation.valid == false) {
+          return;
+        }
+
+        HTTP.post("/Accounts/register", {
+          UserName: this.email,
+          Password: this.password,
+        })
+          .then((res) => {
+            if (res?.data?.Success) {
+              this.$notify({
+                type: "success", // warn, error, success
+                title: "Thành công",
+                text: "Đăng ký thành công",
+              });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } catch (error) {
+        console.log();
+      }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

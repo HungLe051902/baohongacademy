@@ -16,6 +16,19 @@ namespace BaoHongAcademy.API.Interfaces
         /// <returns>Token</returns>
         public string Authenticate(string userName, string password);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public Task<bool> RegisterUser(string userName, string password);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public User GetById(Guid id);
     }
 }

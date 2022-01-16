@@ -49,7 +49,7 @@
   </div>
 </template>
 <script>
-import {saveToken} from "@/helpers/authenticationHelper";
+import { saveToken } from "@/helpers/authenticationHelper";
 import Brand from "@/components/Brand";
 import AccountMixin from "@/mixins/accountMixin.vue";
 import { HTTP } from "@/services/BaseAxios";
@@ -60,8 +60,14 @@ export default {
   setup() {
     // Define a validation schema
     const schema = yup.object({
-      email: yup.string().required().email(),
-      password: yup.string().required().min(8),
+      email: yup
+        .string()
+        .required("Email phải được nhập")
+        .email("Bạn nhập sai định dạng email"),
+      password: yup
+        .string()
+        .required("Password phải được nhập")
+        .min(8, "Password phải có ít nhất 8 ký tự"),
     });
     // Create a form context with the validation schema
     const { meta } = useForm({

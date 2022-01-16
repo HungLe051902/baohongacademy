@@ -12,4 +12,10 @@ namespace BaoHongAcademy.API.Helpers.Constants
     public static class ClaimType {
         public const string USER_ID = "user_id";
     }
+
+    public static class HashAlgorithmCode
+    {
+        public const string SHA384 = "SHA384";
+        public const string SHA512 = "SHA512";
+    }
 }

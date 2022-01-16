@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using BaoHongAcademy.API.Interfaces;
@@ -34,9 +35,14 @@ namespace BaoHongAcademy.API.Controllers
         }
 
         [HttpPost("register")]
-        public ActionServiceResult Register(UserCred userCred)
+        public async Task<ActionServiceResult> Register([NotNull] UserCred userCred)
         {
-            throw new NotImplementedException();
+            var result = await _userService.RegisterUser(userCred.UserName, userCred.Password);
+            if (result)
+            {
+                return new ActionServiceResult(true, StatusCodes.Status200OK, "Đăng ký thành công", result);
+            }
+            return new ActionServiceResult(false, StatusCodes.Status500InternalServerError, "Đăng ký thất bại", result);
         }
     }
 }

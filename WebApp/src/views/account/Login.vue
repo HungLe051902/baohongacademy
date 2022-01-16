@@ -70,14 +70,18 @@ export default {
         .min(8, "Password phải có ít nhất 8 ký tự"),
     });
     // Create a form context with the validation schema
-    const { meta } = useForm({
+    const { meta, handleSubmit } = useForm({
       validationSchema: schema,
+    });
+    const onSubmit = handleSubmit(() => {
+      //
     });
     // No need to define rules for fields
     const { value: email, errorMessage: emailError } = useField("email");
     const { value: password, errorMessage: passwordError } = useField("password");
     return {
       metaValidation: meta,
+      onSubmit,
       email,
       emailError,
       password,
@@ -93,6 +97,7 @@ export default {
   methods: {
     login() {
       try {
+        this.onSubmit();
         if (this.metaValidation.valid == false) {
           return;
         }

@@ -82,7 +82,7 @@ export default {
         .oneOf([yup.ref("password"), null], "Mật khẩu phải khớp"),
     });
     // Create a form context with the validation schema
-    const { meta, handleSubmit } = useForm({
+    const { meta, handleSubmit, resetForm } = useForm({
       validationSchema: schema,
     });
     // No need to define rules for fields
@@ -98,6 +98,7 @@ export default {
     return {
       metaValidation: meta,
       onSubmit,
+      resetForm,
       email,
       emailError,
       password,
@@ -130,11 +131,26 @@ export default {
         })
           .then((res) => {
             if (res?.data?.Success) {
-              this.$notify({
-                type: "success", // warn, error, success
-                title: "Thành công",
-                text: "Đăng ký thành công",
-              });
+              if (res.data.AppCode == 200) {
+                this.$notify({
+                  type: "success", // warn, error, success
+                  title: "Thành công",
+                  text: "Đăng ký thành công",
+                });
+                this.resetForm();
+              } else if (res.data.AppCode == 409) {
+                this.$notify({
+                  type: "warn", // warn, error, success
+                  title: "Cảnh báo",
+                  text: "Email đã được đăng ký",
+                });
+              } else {
+                this.$notify({
+                  type: "error", // warn, error, success
+                  title: "Lỗi",
+                  text: "Có lỗi xảy ra. Vui lòng thử lại!",
+                });
+              }
             }
           })
           .catch((err) => {

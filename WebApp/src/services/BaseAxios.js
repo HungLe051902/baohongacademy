@@ -1,28 +1,41 @@
 import axios from "axios";
-import { getToken } from "@/helpers/authenticationHelper.js";
+import { getToken, logout } from "@/helpers/authenticationHelper.js";
+import { notify } from "@kyvg/vue3-notification";
+import router from "../router";
 
 export const HTTP = axios.create({
   baseURL: `https://localhost:44303/api`,
-  timeout: 5000,
+  timeout: 10000,
   headers: {
     "Access-Control-Allow-Origin": "*",
   },
 });
 
-axios.interceptors.request.use((request) => {
+HTTP.interceptors.request.use((request) => {
   request.headers.common.Authorization = `Bearer ${getToken()}`;
   return request;
 });
 
-axios.interceptors.response.use(
+HTTP.interceptors.response.use(
+  // Any status code that lie within the range of 2xx cause this function to trigger
+  // Do something with response data
   function(response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
     return response;
   },
+  // Any status codes that falls outside the range of 2xx cause this function to trigger
+  // Do something with response error
   function(error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
+    if (error?.response?.status === 401) {
+      logout();
+      router.push("/not-authorize");
+    } else {
+      notify({
+        type: "error", // warn, error, success
+        title: "Thất bại",
+        text: "Có lỗi xảy ra. Vui lòng thử lại!",
+      });
+    }
+
     return Promise.reject(error);
   }
 );

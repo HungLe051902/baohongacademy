@@ -9,12 +9,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using BaoHongAcademy.API.Interfaces;
 using static BaoHongAcademy.Domain.Enums.EnumCommon;
+using BaoHongAcademy.API.Helpers.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BaoHongAcademy.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountsController : ControllerBase
+    public class AccountsController : BaseController
     {
         private readonly IUserService _userService;
 
@@ -23,6 +25,7 @@ namespace BaoHongAcademy.API.Controllers
             _userService = userService;
         }
 
+        [AllowAnonymous]
         [HttpPost("authenticate")]
         public ActionServiceResult Authenticate(UserCred userCred)
         {

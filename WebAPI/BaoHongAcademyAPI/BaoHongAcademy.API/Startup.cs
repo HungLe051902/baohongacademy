@@ -17,6 +17,7 @@ using BaoHongAcademy.Infrastructure;
 using BaoHongAcademy.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using BaoHongAcademy.API.Helpers;
+using BaoHongAcademy.API.Middleware;
 
 namespace BaoHongAcademy.API
 {
@@ -90,6 +91,10 @@ namespace BaoHongAcademy.API
             app.UseRouting();
 
             app.UseCors(MyAllowSpecificOrigins);
+
+            app.UseAuthentication();
+
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseAuthorization();
 

@@ -5,14 +5,17 @@ import router from "../router";
 
 export const HTTP = axios.create({
   baseURL: `https://localhost:44303/api`,
-  timeout: 10000,
+  timeout: 50000,
   headers: {
     "Access-Control-Allow-Origin": "*",
   },
 });
 
 HTTP.interceptors.request.use((request) => {
-  request.headers.common.Authorization = `Bearer ${getToken()}`;
+  var token = getToken();
+  if (token) {
+    request.headers.common.Authorization = `Bearer ${getToken()}`;
+  }
   return request;
 });
 

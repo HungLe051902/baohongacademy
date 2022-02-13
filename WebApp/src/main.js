@@ -27,7 +27,9 @@ import "@/assets/scss/main.scss";
 /* Vue-toastification */
 import Notifications from "@kyvg/vue3-notification";
 
-const app = createApp(App);
+const app = createApp({
+  extends: App,
+});
 
 app.use(router);
 app.use(IonicVue);

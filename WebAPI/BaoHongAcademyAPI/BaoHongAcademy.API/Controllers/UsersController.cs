@@ -37,15 +37,11 @@ namespace BaoHongAcademy.API.Controllers
             return new ActionServiceResult(false, (int)AppCode.Error, "Đăng nhập thất bại", null);
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionServiceResult> Register([NotNull] UserCred userCred)
         {
             var result = await _userService.RegisterUser(userCred.UserName, userCred.Password);
-            //if (result)
-            //{
-            //    return new ActionServiceResult(true, StatusCodes.Status200OK, "Đăng ký thành công", result);
-            //}
-            //return new ActionServiceResult(false, StatusCodes.Status500InternalServerError, "Đăng ký thất bại", result);
             return result;
         }
     }

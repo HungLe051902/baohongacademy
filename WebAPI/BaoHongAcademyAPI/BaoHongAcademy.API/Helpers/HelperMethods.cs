@@ -23,7 +23,10 @@ namespace BaoHongAcademy.API.Helpers
             var key = Encoding.ASCII.GetBytes(secretKey);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim(ClaimType.USER_ID, user.UserId.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { 
+                    new Claim(ClaimType.USER_ID, user.UserId.ToString()),
+                    new Claim(ClaimType.USER_NAME, user.Email)
+                }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };

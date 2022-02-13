@@ -2,7 +2,7 @@
   <div id="sidebar">
     <div id="sidebar__header">BaoHongAcademy</div>
     <div id="sidebar__content">
-      <div v-if="isLogin" class="sidebar__user-info">abcdsef</div>
+      <div v-if="isLogin" class="sidebar__user-info">{{ user.userName }}</div>
       <div v-else class="sidebar__content-action">
         <button v-on:click="goToRegister" class="w-100 h-btn h-btn-primary mt-3">
           <img class="icon mr-1" src="@/assets/svg/person-add-outline.svg" alt="" />
@@ -58,10 +58,33 @@ export default {
   data() {
     return {
       isLogin: false,
+      user: {
+        userName: "",
+      },
     };
   },
   created() {
-    this.isLogin = !!localStorage.getItem(TOKEN_KEY);
+    var token = localStorage.getItem(TOKEN_KEY);
+    if (token) {
+      this.isLogin = true;
+      var tokenParser = this.parseJwt(token);
+      this.user.userName = tokenParser.user_name;
+    }
+  },
+  methods: {
+    parseJwt(token) {
+      var base64Url = token.split(".")[1];
+      var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+      var jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split("")
+          .map(function (c) {
+            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+          })
+          .join("")
+      );
+      return JSON.parse(jsonPayload);
+    },
   },
 };
 </script>

@@ -12,4 +12,4 @@ const logout = function() {
   localStorage.clear();
 };
 
-export { saveToken, getToken, logout };
+export { saveToken, getToken, logout, TOKEN_KEY };

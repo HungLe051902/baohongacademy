@@ -2,12 +2,13 @@
   <div id="sidebar">
     <div id="sidebar__header">BaoHongAcademy</div>
     <div id="sidebar__content">
-      <div class="sidebar__content-action">
-        <button class="w-100 h-btn h-btn-primary mt-3">
+      <div v-if="isLogin" class="sidebar__user-info">abcdsef</div>
+      <div v-else class="sidebar__content-action">
+        <button v-on:click="goToRegister" class="w-100 h-btn h-btn-primary mt-3">
           <img class="icon mr-1" src="@/assets/svg/person-add-outline.svg" alt="" />
           Đăng ký
         </button>
-        <button class="w-100 h-btn h-btn-secondary mt-2 mb-3">
+        <button v-on:click="goToLogin" class="w-100 h-btn h-btn-secondary mt-2 mb-3">
           <img class="icon mr-1" src="@/assets/svg/log-in-outline.svg" alt="" />
           Đăng nhập
         </button>
@@ -49,6 +50,21 @@
     </div>
   </div>
 </template>
+<script>
+import AccountMixin from "@/mixins/accountMixin.vue";
+import { TOKEN_KEY } from "@/helpers/authenticationHelper.js";
+export default {
+  mixins: [AccountMixin],
+  data() {
+    return {
+      isLogin: false,
+    };
+  },
+  created() {
+    this.isLogin = !!localStorage.getItem(TOKEN_KEY);
+  },
+};
+</script>
 <style lang="scss" scoped>
 #sidebar {
   width: $sidebar-width;
@@ -64,6 +80,14 @@
     border-bottom: $border-base;
   }
   #sidebar__content {
+    .sidebar__user-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-white;
+      border-bottom: $border-base;
+      padding: 20px 0;
+    }
     .sidebar__content-action {
       padding: 0 20px;
       font-weight: 500;

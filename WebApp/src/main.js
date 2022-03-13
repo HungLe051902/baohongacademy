@@ -24,6 +24,9 @@ import "@ionic/vue/css/display.css";
 // Import css
 import "@/assets/scss/main.scss";
 
+// Tailwindcss
+import "./index.css";
+
 const app = createApp(App);
 
 app.use(router);
